@@ -1,7 +1,3 @@
-; ============================================================
-; data.asm  -  SHARED DATA (both halves use this)
-; ============================================================
-
 ; ---------- direction codes stored in TrackMap ----------
 DIR_R       equ 1           ; move right  (col+1)
 DIR_U       equ 2           ; move up     (row-1)
@@ -16,7 +12,6 @@ ATTR_STATION equ 2Fh        ; white letter on green
 ATTR_TEXT    equ 0Fh        ; bright white text
 ATTR_ON      equ 0Eh        ; selected route  (yellow)
 ATTR_OFF     equ 08h        ; unselected route (dark grey)
-
 ; ---------- trains ----------
 MAXTRAINS   equ 6           ; brief needs at least 5
 TR_SIZE     equ 6           ; bytes per train record
@@ -26,9 +21,7 @@ TR_DEST     equ 2           ; station letter 'A'..'D'
 TR_INTERVAL equ 3           ; ticks between moves
 TR_COUNT    equ 4           ; ticks left until next move
 TR_ACTIVE   equ 5           ; 1 = on screen, 0 = free slot
-
 TrainTable  times MAXTRAINS*TR_SIZE db 0
-
 ; ---------- game state ----------
 Switches    db 0,0,0,0      ; route of switch 1..4 (0 or 1)
 Ticks       dw 0            ; raised by TimerISR
@@ -38,11 +31,9 @@ Mistakes    db 0
 Mode        db 0            ; 0 = single-player, 1 = co-op
 SpedUp      db 0            ; 1 once SpeedUp has run
 BaseInterval db 6           ; interval for newly spawned trains
-
 ; ---------- the map: one byte per screen cell ----------
 TrackMap    times 25*80 db 0
 Claims      times 25*80 db 0    ; cells claimed during this update
-
 ; ---------- layout tables ----------
 ; rails: row, col, direction, length  (vertical lines listed top-down)
 LineTable:
@@ -60,14 +51,12 @@ LineTable:
     db 13, 48, DIR_D,  3    ; switch 4 down toward D
     db 16, 48, DIR_R, 13    ; ... then right to D
 LINECOUNT   equ 13
-
 ; switches: row, col, route-0 direction, route-1 direction
 SwitchInfo:
     db  4, 12, DIR_R, DIR_D     ; 1: A  / shared
     db 20, 12, DIR_R, DIR_U     ; 2: D  / shared
     db 12, 35, DIR_U, DIR_R     ; 3: B  / switch 4
     db 12, 48, DIR_R, DIR_D     ; 4: C  / D
-
 ; stations: row, col, letter
 StationInfo:
     db  4, 61, 'A'
@@ -76,10 +65,8 @@ StationInfo:
     db 16, 61, 'D'
     db 20, 31, 'D'
 STATIONCOUNT equ 5
-
 ; entrances: row, col   (SpawnTrain uses these)
 Entrances   db 4, 2,  20, 2
-
 StrTitle    db 'S W I T C H Y A R D', 0
 StrEntry1   db 'ENTRY 1', 0
 StrEntry2   db 'ENTRY 2', 0
