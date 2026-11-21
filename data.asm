@@ -4,7 +4,6 @@ DIR_U       equ 2           ; move up     (row-1)
 DIR_D       equ 3           ; move down   (row+1)
 SW_CODE     equ 10h         ; switch n is stored as 10h+n (n = 0..3)
                             ; stations are stored as their letter 'A'..'D'
-
 ; ---------- colours (text-mode attribute bytes) ----------
 ATTR_RAIL    equ 07h        ; grey rails
 ATTR_SWITCH  equ 1Eh        ; yellow digit on blue box
