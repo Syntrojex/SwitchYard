@@ -186,7 +186,7 @@ pickChar:
     mov bl, al
     mov al, '-'
     cmp bl, 1           ; horizontal?
-    je drawit
+    je drawIt
     mov al, '|'
 drawIt:
     call putChar
