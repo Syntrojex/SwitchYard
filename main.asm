@@ -1,7 +1,7 @@
 [org 0x0100]
 ;SwitchYard By Shauzab Mukhtar (25L-3084) and Muhammad Mustafa Amir (25L-3107)
-org 100h            ; .com programs start at 100h
-jmp start           ; skip over the included data/procs
+[org 0x0100]           
+jmp start           
 %include "data.asm"
 %include "Shauzab.asm"
 %include "mustafa.asm"
