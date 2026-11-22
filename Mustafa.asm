@@ -1,6 +1,3 @@
-[org 0x0100]
-                jmp start
-
 ; ============================================================================
 ; SHARED DATA BLOCK  (layout agreed with Shauzab - keep identical)
 ; ============================================================================
@@ -591,36 +588,3 @@ UnhookTimer:    push ax
 ut_done:        pop es
                 pop ax
                 ret
-
-; ============================================================================
-; ----------  TEMPORARY TEST SECTION - DELETE WHEN MERGING WITH SHAUZAB  ------
-; Shauzab's SpeedUp is called by RecordArrival, so a dummy is needed here.
-; ============================================================================
-SpeedUp:        mov byte [SpedUp], 1
-                ret
-
-; Test main: hook, reset, spawn two trains, deliver one right and one wrong,
-; force a win, show the result screen and obey replay / exit.
-start:          call HookTimer
-restart:        call ResetGame
-                call ClearClaims
-                call SpawnTrain           ; train 0 at an entrance
-                call SpawnTrain           ; train 1 at the other entrance
-
-                mov si, 0
-                mov al, [TrainTable+4]    ; its own destination: right station
-                call RecordArrival        ; Score = 1
-                mov si, 1
-                mov al, 'Z'               ; not a station: wrong station
-                call RecordArrival        ; Mistakes = 1
-
-                call CheckGameOver        ; AL = 0, still playing
-                mov word [Score], 10      ; pretend ten deliveries happened
-                call CheckGameOver        ; AL = 1, won
-                call ShowResult           ; AL = 1 replay, 0 exit
-                cmp al, 1
-                je restart
-
-                call UnhookTimer          ; restore the vector before DOS
-                mov ax, 0x4c00            ; terminate program
-                int 0x21
