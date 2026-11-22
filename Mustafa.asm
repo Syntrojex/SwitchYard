@@ -12,9 +12,8 @@ Claims:         times 16 dw 0           ; cells claimed in this update (DH:DL)
 ClaimCount:     dw 0                    ; number of valid entries in Claims
 CurInterval:    dw 12                   ; interval given to every new train
 GameState:      db 0                    ; 0 playing, 1 won, 2 lost
-EntryRow:       db 6, 18                ; row of entrance 1, entrance 2
-EntryCol:       db 8, 8                 ; column of entrance 1, entrance 2
-
+EntryRow:       db 4, 20                ; row of entrance 1, entrance 2
+EntryCol:       db 2, 2                 ; column of entrance 1, entrance 2
 ; ============================================================================
 ; MUSTAFA'S PRIVATE DATA
 ; ============================================================================

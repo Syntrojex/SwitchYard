@@ -82,10 +82,10 @@ nextLine:
     mov bl,[si+2]   ; direction
     mov cl,[si+3]   ; length
     mov ch,0
-    mov al,'-'
-    cmp bl,1        ;is it horizontal
+    mov al,0xC4     ;solid horizontal line
+    cmp bl,1        ;is it horizontal or not
     je nextCellDraw
-    mov al,'|'
+    mov al,0xB3     ;solid vertical line
 nextCellDraw:
     mov ah,0x07     ;grey color
     call putChar    ;drawing on screen
@@ -189,10 +189,10 @@ nextRoute:
     mov ah, 0x0E        ; yellow means selected
 pickChar:
     mov bl, al
-    mov al, '-'
+    mov al, 0xC4        ;solid horizontal line
     cmp bl, 1           ; horizontal?
     je drawIt
-    mov al, '|'
+    mov al, 0xB3        ;solid vertical line
 drawIt:
     call putChar
     inc cl
@@ -317,10 +317,10 @@ restoreCell:
     call getIndex
     mov bl,[trackMap+di]
     mov ah,0x07
-    mov al,'-'
+    mov al,0xC4           ;solid horizontal line
     cmp bl,1              ;horizontal rail
     je rcDraw
-    mov al,'|'
+    mov al,0xB3           ;solid vertical line
     cmp bl,0x10           ;vertical rail
     jb rcDraw
     cmp bl,0x13
@@ -447,6 +447,7 @@ speedDone:
 ; showMenu: sets mode = 0 (single player) or 1 (two player)
 showMenu:
     push ax
+    push cx               ;cx is used to hide the cursor
     push dx
     push si
     mov ax,0x0003
@@ -483,8 +484,12 @@ pickSingle:
 menuDone:
     mov ax,0x0003
     int 0x10              ;clear screen for the game
+    mov ah,1
+    mov cx,0x2000
+    int 0x10              ;hide the blinking cursor
     pop si
     pop dx
+    pop cx
     pop ax
     ret
 ;drawHUD: show score, mistakes and time on row number 23
