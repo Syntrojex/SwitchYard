@@ -1,1 +1,30 @@
 
+{
+  "name": "SwitchYard",
+  "version": "1.0.0",
+  "description": "An 8086 Assembly-based railway train routing game.",
+  "language": "8086 Assembly",
+  "platform": "DOS",
+  "assembler": "NASM",
+  "entry": "main.asm",
+  "executable": "MAIN.COM",
+  "files": [
+    "main.asm",
+    "Mustafa.asm",
+    "Shauzab.asm",
+    "MAIN.COM"
+  ],
+  "contributors": [
+    "Mustafa",
+    "Shauzab"
+  ],
+  "features": [
+    "Single Player",
+    "Two Player Co-op",
+    "Train Routing",
+    "Railway Switches",
+    "Collision Detection",
+    "Score and Timer",
+    "Win and Lose System"
+  ]
+}
