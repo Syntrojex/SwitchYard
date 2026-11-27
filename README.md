@@ -1,4 +1,3 @@
-
 <div align="center">
 
 # 🚂 SwitchYard
@@ -27,6 +26,8 @@ Players must make the correct routing decisions while managing multiple trains s
 
 The project demonstrates low-level programming concepts through an interactive DOS-based game.
 
+---
+
 ## ✨ Features
 
 - **Single Player Mode** – Control all four railway switches independently.
@@ -40,6 +41,8 @@ The project demonstrates low-level programming concepts through an interactive D
 - **Progressive Difficulty** – Train movement speed increases as the game progresses.
 - **Game Over & Replay** – Win or lose, view your results, and restart the game.
 
+---
+
 ## 🎮 Game Controls
 
 | Action | Single Player | Two Player Co-op |
@@ -51,6 +54,8 @@ The project demonstrates low-level programming concepts through an interactive D
 | Exit Game | `Esc` | `Esc` |
 | Replay | `R` | `R` |
 
+---
+
 ## 🎯 Game Rules
 
 - Successfully deliver a train to its assigned station to earn one point.
@@ -61,6 +66,8 @@ The project demonstrates low-level programming concepts through an interactive D
 - Train movement speed increases after 6 successful deliveries in Single Player or 12 in Co-op.
 - New trains spawn approximately every 2 seconds.
 - Players must manage all active trains without causing railway congestion.
+
+---
 
 ## 🛠️ Technologies & Concepts
 
@@ -80,6 +87,8 @@ The project demonstrates low-level programming concepts through an interactive D
 - Train Movement and Collision Detection
 - Multi-Entity Game State Management
 
+---
+
 ## 📂 Project Structure
 
 ```text
@@ -92,6 +101,8 @@ SwitchYard/
 ├── cwsdpmi.exe       # DOS protected-mode support utility
 └── project.json      # Project configuration
 ```
+
+---
 
 ## ▶️ Running the Game
 
@@ -117,14 +128,7 @@ nasm -f bin main.asm -o MAIN.COM
 
 Run the generated `MAIN.COM` inside DOSBox.
 
-## 📚 Project Files
-
-| File | Description |
-|---|---|
-| `main.asm` | Program entry point, initialization, and main game loop. |
-| `Mustafa.asm` | Train management, timer handling, scoring, and game-state logic. |
-| `Shauzab.asm` | Railway rendering, switch operations, keyboard controls, and train movement. |
-| `MAIN.COM` | Ready-to-run compiled game. |
+---
 
 ## 👨‍💻 Contributors
 
