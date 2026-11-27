@@ -5,14 +5,6 @@
   "language": "8086 Assembly",
   "platform": "DOS",
   "assembler": "NASM",
-  "entry": "main.asm",
-  "executable": "MAIN.COM",
-  "files": [
-    "main.asm",
-    "Mustafa.asm",
-    "Shauzab.asm",
-    "MAIN.COM"
-  ],
   "contributors": [
     "Mustafa",
     "Shauzab"
