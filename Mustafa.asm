@@ -1,6 +1,3 @@
-; ============================================================================
-; SHARED DATA BLOCK  (layout agreed with Shauzab - keep identical)
-; ============================================================================
 TrainTable:     times 48 dw 0           ; 8 records x 6 words, see layout above
 Switches:       db 0, 0, 0, 0           ; switches 1-4, each 0 or 1
 Ticks:          dw 0                    ; timer ticks since the game began
@@ -14,9 +11,10 @@ CurInterval:    dw 12                   ; interval given to every new train
 GameState:      db 0                    ; 0 playing, 1 won, 2 lost
 EntryRow:       db 4, 20                ; row of entrance 1, entrance 2
 EntryCol:       db 2, 2                 ; column of entrance 1, entrance 2
-; ============================================================================
+
+
 ; MUSTAFA'S PRIVATE DATA
-; ============================================================================
+
 oldtimer:       dd 0                    ; space for saving old timer ISR
 NextEntrance:   db 0                    ; entrance SpawnTrain tries first
 RandSeed:       dw 0x1234               ; seed of the random generator
@@ -28,9 +26,6 @@ msgmist:        db 'Mistakes:'          ; 9
 msgtime:        db 'Time (s):'          ; 9
 msgopt:         db 'R = Replay    Esc = Exit'   ; 24
 
-; ============================================================================
-; SUPPORT ROUTINES FROM THE BOOK
-; ============================================================================
 
 ; ---- subroutine to clear the screen (Example 6.2) ----
 clrscr:         push es
